@@ -33,7 +33,7 @@ export default function DashboardPage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Welcome back, John!</h1>
+              <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Welcome back, learner!</h1>
               <p className="text-muted-foreground">
                 Track your progress and connect with mentors.
               </p>
@@ -502,5 +502,119 @@ export default function DashboardPage() {
                           <Button variant="outline" size="sm" className="flex-1 gap-1">
                             <MessageSquare className="h-4 w-4" /> Message
                           </Button>
-                          <Button size="sm" className="flex\
-
+                          <Button size="sm" className="flex-1 gap-1">
+                                        <Calendar className="h-4 w-4" /> Schedule
+                                        </Button>
+                                      </CardFooter>
+                                      </Card>
+                                    ))}
+                                    </div>
+                                  </CardContent>
+                                  <CardFooter>
+                                    <Link href="/mentors" className="w-full">
+                                    <Button variant="outline" className="w-full gap-1">
+                                      Find More Mentors <ArrowRight className="h-4 w-4" />
+                                    </Button>
+                                    </Link>
+                                  </CardFooter>
+                                  </Card>
+                                </TabsContent>
+                                
+                                {/* Resources Tab */}
+                                <TabsContent value="resources" className="space-y-4">
+                                  <Card>
+                                  <CardHeader>
+                                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                    <div>
+                                      <CardTitle>Learning Resources</CardTitle>
+                                      <CardDescription>
+                                      Curated content to help you advance your skills
+                                      </CardDescription>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                      <Button>
+                                      <Plus className="mr-2 h-4 w-4" /> Save Resource
+                                      </Button>
+                                    </div>
+                                    </div>
+                                  </CardHeader>
+                                  <CardContent>
+                                    <Tabs defaultValue="all" className="space-y-4">
+                                    <TabsList>
+                                      <TabsTrigger value="all">All</TabsTrigger>
+                                      <TabsTrigger value="courses">Courses</TabsTrigger>
+                                      <TabsTrigger value="books">Books</TabsTrigger>
+                                      <TabsTrigger value="articles">Articles</TabsTrigger>
+                                      <TabsTrigger value="videos">Videos</TabsTrigger>
+                                    </TabsList>
+                                    
+                                    <TabsContent value="all" className="space-y-4">
+                                      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                      {Array.from({ length: 6 }).map((_, index) => (
+                                        <Card key={index} className="overflow-hidden border-none shadow-sm">
+                                        <div className="aspect-video overflow-hidden">
+                                          <Image
+                                          src={`/placeholder.svg?height=100&width=200&text=Resource ${index + 1}`}
+                                          alt={`Resource ${index + 1}`}
+                                          width={200}
+                                          height={100}
+                                          className="h-full w-full object-cover transition-transform hover:scale-105"
+                                          />
+                                        </div>
+                                        <CardHeader className="p-3">
+                                          <div className="flex justify-between">
+                                          <CardTitle className="text-base">
+                                            {["Advanced React Patterns", "Node.js Microservices", "CSS Architecture", "TypeScript Deep Dive", "GraphQL Fundamentals", "Web Performance Optimization"][index % 6]}
+                                          </CardTitle>
+                                          <Badge variant="outline" className="text-xs">
+                                            {["Course", "eBook", "Video", "Workshop", "Article", "Course"][index % 6]}
+                                          </Badge>
+                                          </div>
+                                          <CardDescription className="flex items-center gap-1 text-xs">
+                                          <Clock className="h-3 w-3" />
+                                          {["8 hours", "320 pages", "1.5 hours", "4 hours", "15 min read", "6 hours"][index % 6]} • 
+                                          {["TechAcademy", "Code Publishing", "YouTube", "WorkshopPro", "Dev.to", "FrontendMasters"][index % 6]}
+                                          </CardDescription>
+                                        </CardHeader>
+                                        <CardFooter className="p-3 pt-0">
+                                          <Button variant="outline" size="sm" className="w-full">
+                                          View Resource
+                                          </Button>
+                                        </CardFooter>
+                                        </Card>
+                                      ))}
+                                      </div>
+                                      <div className="flex justify-center">
+                                      <Button variant="outline">Load More</Button>
+                                      </div>
+                                    </TabsContent>
+                                    
+                                    {["courses", "books", "articles", "videos"].map((tab) => (
+                                      <TabsContent key={tab} value={tab}>
+                                      <div className="flex flex-col items-center justify-center py-12 text-center">
+                                        <BookOpen className="h-12 w-12 text-muted-foreground" />
+                                        <h3 className="mt-4 text-lg font-medium">No {tab} saved yet</h3>
+                                        <p className="mt-2 text-sm text-muted-foreground">
+                                        Browse the catalog and save {tab} to see them here
+                                        </p>
+                                        <Button className="mt-4">Browse {tab.charAt(0).toUpperCase() + tab.slice(1)}</Button>
+                                      </div>
+                                      </TabsContent>
+                                    ))}
+                                    </Tabs>
+                                  </CardContent>
+                                  <CardFooter>
+                                    <Link href="/resources" className="w-full">
+                                    <Button className="w-full gap-1">
+                                      Browse All Resources <ArrowRight className="h-4 w-4" />
+                                    </Button>
+                                    </Link>
+                                  </CardFooter>
+                                  </Card>
+                                </TabsContent>
+                                </Tabs>
+                              </div>
+                              </section>
+                            </div>
+                            )
+                          }

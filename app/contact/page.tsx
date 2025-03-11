@@ -35,7 +35,7 @@ export default function ContactPage() {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Have questions or feedback? We'd love to hear from you.
+                Have questions or feedback? We&apos;d love to hear from you.
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Send Us a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    Fill out the form below and we&apos;ll get back to you as soon as possible.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -133,7 +133,7 @@ export default function ContactPage() {
                       </div>
                       <h3 className="text-xl font-bold">Message Sent!</h3>
                       <p className="text-muted-foreground">
-                        Thank you for reaching out. We'll respond to your inquiry shortly.
+                        Thank you for reaching out. We&apos;ll respond to your inquiry shortly.
                       </p>
                     </div>
                   ) : (
@@ -193,14 +193,26 @@ export default function ContactPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Visit Our Office</h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-lg">We're located in the heart of Tech City.</p>
+              <p className="max-w-[600px] text-muted-foreground md:text-lg">We&apos;re located in the heart of Tech City.</p>
             </div>
           </div>
           <div className="mx-auto max-w-5xl py-8">
             <div className="overflow-hidden rounded-xl border shadow-md aspect-video">
               {/* In a real app, you would embed a Google Map or similar here */}
-              <div className="flex items-center justify-center w-full h-full bg-muted">
-                <p className="text-muted-foreground">Interactive Map Would Be Embedded Here</p>
+              <div className="relative w-full h-full bg-muted">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.9347158497482!2d75.70348427481661!3d31.25609997462454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a5747a9eb91%3A0xc74b34c05aa5b4b8!2sLovely%20Professional%20University!5e0!3m2!1sen!2sin!4v1715308599926!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Lovely Professional University Map"
+                ></iframe>
+                <div className="absolute bottom-3 right-3 bg-card p-2 rounded shadow-sm text-xs">
+                  Lovely Professional University, Jalandhar - Delhi GT Road, Phagwara, Punjab
+                </div>
               </div>
             </div>
           </div>

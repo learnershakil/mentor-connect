@@ -68,7 +68,7 @@ export default function PricingPage() {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple, Transparent Pricing</h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Choose the plan that's right for your career journey.
+                Choose the plan that&apos;s right for your career journey.
               </p>
             </div>
           </div>
@@ -221,8 +221,8 @@ export default function PricingPage() {
               </div>
               <div className="rounded-lg bg-background p-4">
                 <blockquote className="italic text-muted-foreground">
-                  "Implementing Mentor Connect's enterprise solution has significantly improved our onboarding process
-                  and employee retention. The ROI has been exceptional."
+                  &quot;Implementing Mentor Connect&apos;s enterprise solution has significantly improved our onboarding process
+                  and employee retention. The ROI has been exceptional.&quot;
                 </blockquote>
                 <div className="mt-2 text-sm font-medium">— CTO, Fortune 500 Tech Company</div>
               </div>

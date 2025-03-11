@@ -12,37 +12,37 @@ export default function Home() {
       {/* Hero Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-primary/5 to-background">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Connect with Industry Mentors
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Accelerate your career growth with personalized guidance from experienced professionals in your field.
-                </p>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                Connect with Industry Mentors
+              </h1>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                Accelerate your career growth with personalized guidance from experienced professionals in your field.
+              </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link href="/skill-selector">
-                  <Button size="lg" className="gap-1.5">
-                    Find Your Mentor <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button size="lg" variant="outline">
-                    Learn More
-                  </Button>
-                </Link>
+              <Link href="/skill-selector">
+                <Button size="lg" className="gap-1.5">
+                Find Your Mentor <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button size="lg" variant="outline">
+                Learn More
+                </Button>
+              </Link>
               </div>
             </div>
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=550&q=80"
               width={550}
               height={550}
               alt="Mentor Connect"
               className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
             />
-          </div>
+            </div>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Select Your Skills</h3>
               <p className="text-muted-foreground">
-                Choose the skills and areas you're interested in developing further.
+                Choose the skills and areas you&apos;re interested in developing further.
               </p>
             </div>
             <div className="flex flex-col items-center space-y-4 text-center">

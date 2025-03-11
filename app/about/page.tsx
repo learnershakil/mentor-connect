@@ -11,25 +11,25 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-primary/5 to-background">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Our Mission & Vision
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Bridging the gap between education and industry through meaningful mentorship connections.
-                </p>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                Our Mission & Vision
+              </h1>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                Bridging the gap between education and industry through meaningful mentorship connections.
+              </p>
               </div>
             </div>
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop"
               width={550}
               height={550}
               alt="About Mentor Connect"
               className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
             />
-          </div>
+            </div>
         </div>
       </section>
 
@@ -55,10 +55,10 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
                 width={600}
                 height={400}
-                alt="Mentor Connect Team"
+                alt="Team collaboration at Mentor Connect"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
               />
             </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We believe in the power of community and collective knowledge sharing to elevate everyone's potential.
+                  We believe in the power of community and collective knowledge sharing to elevate everyone&apos;s potential.
                 </p>
               </CardContent>
             </Card>
@@ -132,59 +132,59 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                name: "Emily Chen",
-                role: "Founder & CEO",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Former tech lead with 15+ years of experience in software development and mentorship.",
+              name: "Emily Chen",
+              role: "Founder & CEO",
+              image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop",
+              bio: "Former tech lead with 15+ years of experience in software development and mentorship.",
               },
               {
-                name: "David Rodriguez",
-                role: "CTO",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "AI specialist with a passion for helping new engineers navigate the complex tech landscape.",
+              name: "David Rodriguez",
+              role: "CTO",
+              image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop",
+              bio: "AI specialist with a passion for helping new engineers navigate the complex tech landscape.",
               },
               {
-                name: "Sarah Johnson",
-                role: "Head of Mentorship",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Career coach with expertise in matching mentees with the perfect industry mentors.",
+              name: "Sarah Johnson",
+              role: "Head of Mentorship",
+              image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070&auto=format&fit=crop",
+              bio: "Career coach with expertise in matching mentees with the perfect industry mentors.",
               },
               {
-                name: "Michael Lee",
-                role: "Product Lead",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "UX specialist focused on creating intuitive learning experiences for our community.",
+              name: "Michael Lee",
+              role: "Product Lead",
+              image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop",
+              bio: "UX specialist focused on creating intuitive learning experiences for our community.",
               },
               {
-                name: "Priya Patel",
-                role: "Community Manager",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Passionate about building inclusive tech communities and fostering meaningful connections.",
+              name: "Priya Patel",
+              role: "Community Manager",
+              image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=2070&auto=format&fit=crop",
+              bio: "Passionate about building inclusive tech communities and fostering meaningful connections.",
               },
               {
-                name: "James Wilson",
-                role: "Marketing Director",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Digital marketing expert dedicated to connecting students with life-changing mentorship opportunities.",
+              name: "Shakil Ahmad",
+              role: "Lead Developer",
+              image: "/learner.jpg",
+              bio: "Full-stack developer with a knack for building scalable platforms that empower others.",
               },
             ].map((member, index) => (
               <Card key={index} className="overflow-hidden border-none shadow-md">
-                <div className="aspect-square overflow-hidden">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    width={300}
-                    height={300}
-                    className="h-full w-full object-cover transition-transform hover:scale-105"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle>{member.name}</CardTitle>
-                  <p className="text-sm font-medium text-primary">{member.role}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{member.bio}</p>
-                </CardContent>
+              <div className="aspect-square overflow-hidden">
+              <Image
+              src={member.image || "/learner.jpg"}
+              alt={member.name}
+              width={300}
+              height={300}
+              className="h-full w-full object-cover transition-transform hover:scale-105"
+              />
+              </div>
+              <CardHeader>
+              <CardTitle>{member.name}</CardTitle>
+              <p className="text-sm font-medium text-primary">{member.role}</p>
+              </CardHeader>
+              <CardContent>
+              <p className="text-muted-foreground">{member.bio}</p>
+              </CardContent>
               </Card>
             ))}
           </div>

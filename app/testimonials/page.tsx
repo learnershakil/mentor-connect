@@ -11,7 +11,7 @@ export default function TestimonialsPage() {
       name: "Alex Johnson",
       role: "Software Engineer",
       company: "TechCorp",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100",
       content:
         "Mentor Connect helped me transition from a junior developer to a senior role in just 8 months. The guidance I received was invaluable. My mentor not only helped me improve my technical skills but also provided insights into navigating corporate culture and negotiating promotions. I can't recommend this platform enough for anyone looking to accelerate their tech career.",
     },
@@ -19,7 +19,7 @@ export default function TestimonialsPage() {
       name: "Sarah Chen",
       role: "Data Scientist",
       company: "DataViz",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&h=100",
       content:
         "Finding a mentor in AI was challenging until I discovered Mentor Connect. Now I'm working on cutting-edge projects thanks to my mentor's guidance. The personalized roadmap helped me focus on the most relevant skills for my career goals. My mentor also introduced me to key industry connections that led to my current position. The investment in Mentor Connect paid off tenfold.",
     },
@@ -27,7 +27,7 @@ export default function TestimonialsPage() {
       name: "Michael Rodriguez",
       role: "UX Designer",
       company: "CreativeHub",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=100&h=100",
       content:
         "The personalized roadmap helped me focus on the right skills to develop. I've now landed my dream job at a top design agency. My mentor reviewed my portfolio and provided actionable feedback that completely transformed my work. The structured approach to skill development and career planning made all the difference in my professional journey.",
     },
@@ -38,7 +38,7 @@ export default function TestimonialsPage() {
       name: "Priya Patel",
       role: "Frontend Developer",
       company: "WebSolutions",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100",
       content:
         "As a self-taught developer, I had gaps in my knowledge that were holding me back. My mentor helped identify these gaps and created a learning plan that filled them quickly. Within 6 months, I was able to secure a position that doubled my previous salary.",
     },
@@ -46,7 +46,7 @@ export default function TestimonialsPage() {
       name: "David Kim",
       role: "Cybersecurity Analyst",
       company: "SecureNet",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100",
       content:
         "The specialized mentorship in cybersecurity was exactly what I needed to pivot from general IT into security. My mentor's practical exercises and real-world scenarios prepared me for challenges I now face daily in my role.",
     },
@@ -54,7 +54,7 @@ export default function TestimonialsPage() {
       name: "Emma Wilson",
       role: "Product Manager",
       company: "InnovateTech",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&h=100",
       content:
         "Transitioning from engineering to product management was daunting, but my mentor made it seamless. The insights into stakeholder management and product strategy were invaluable for my career change.",
     },
@@ -62,7 +62,7 @@ export default function TestimonialsPage() {
       name: "James Thompson",
       role: "Mobile Developer",
       company: "AppWorks",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&h=100",
       content:
         "The mentor matching algorithm is spot-on! I was paired with someone who had followed almost the exact career path I aspired to. Their guidance helped me avoid common pitfalls and accelerate my progress.",
     },
@@ -70,7 +70,7 @@ export default function TestimonialsPage() {
       name: "Olivia Martinez",
       role: "DevOps Engineer",
       company: "CloudSystems",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&h=100",
       content:
         "The technical mentorship I received was outstanding. My mentor helped me master containerization and CI/CD pipelines, which were key skills for my promotion to lead DevOps engineer.",
     },
@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
       name: "Robert Chen",
       role: "Blockchain Developer",
       company: "ChainInnovate",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100",
       content:
         "Finding mentorship in emerging technologies like blockchain is difficult. Mentor Connect connected me with an industry pioneer who helped me understand not just the technology, but where the industry is heading.",
     },
@@ -161,8 +161,15 @@ export default function TestimonialsPage() {
             </div>
           </div>
           <div className="mx-auto max-w-4xl py-12">
-            <div className="overflow-hidden rounded-xl border shadow-md aspect-video bg-muted flex items-center justify-center">
-              <p className="text-muted-foreground">Video Testimonial Would Be Embedded Here</p>
+            <div className="overflow-hidden rounded-xl border shadow-md aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/8LSt8_11wbQ"
+                title="Mentor Connect Success Story"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
