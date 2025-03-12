@@ -1,0 +1,274 @@
+// This is the Prisma schema file for Mentor Connect
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Account & Authentication
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("MENTEE") // MENTEE, MENTOR, ADMIN
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts        Account[]
+  sessions        Session[]
+  mentorProfile   MentorProfile?
+  menteeProfile   MenteeProfile?
+  activities      Activity[]
+  notifications   Notification[]
+  learningSessions LearningSession[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Core Profile Models
+model MentorProfile {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  title            String?
+  bio              String?  @db.Text
+  company          String?
+  industry         String?
+  location         String?
+  yearsOfExperience Int      @default(0)
+  hourlyRate       Decimal? @db.Decimal(10, 2)
+  rating           Float    @default(0)
+  skills           Skill[]
+  availabilities   MentorAvailability[]
+  specializations  String[]
+  languages        String[]
+  education        Json[]
+  workExperience   Json[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessions      MentorSession[] @relation("MentorSessions")
+  testimonials  Testimonial[]
+}
+
+model MenteeProfile {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  bio              String?  @db.Text
+  goals            String?  @db.Text
+  currentRole      String?
+  desiredRole      String?
+  careerPathId     String?
+  yearsOfExperience Int     @default(0)
+  education        Json[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  careerPath     CareerPath?    @relation(fields: [careerPathId], references: [id])
+  completedSkills Skill[]       
+  mentorSessions MentorSession[] @relation("MenteeSessions")
+  testimonials   Testimonial[]
+}
+
+model MentorAvailability {
+  id        String   @id @default(cuid())
+  mentorId  String
+  dayOfWeek Int // 0 = Sunday, 6 = Saturday
+  startTime String // HH:MM format
+  endTime   String // HH:MM format
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  mentor    MentorProfile @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+}
+
+// Mentoring Sessions
+model MentorSession {
+  id          String   @id @default(cuid())
+  mentorId    String
+  menteeId    String
+  topic       String
+  description String?  @db.Text
+  startTime   DateTime
+  endTime     DateTime
+  status      String   @default("SCHEDULED") // SCHEDULED, COMPLETED, CANCELLED
+  meetingLink String?
+  notes       String?  @db.Text
+  feedback    String?  @db.Text
+  rating      Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  mentor     MentorProfile @relation("MentorSessions", fields: [mentorId], references: [id])
+  mentee     MenteeProfile @relation("MenteeSessions", fields: [menteeId], references: [id])
+}
+
+// Career Development
+model CareerPath {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?  @db.Text
+  industry        String
+  level           String   @default("BEGINNER") // BEGINNER, INTERMEDIATE, ADVANCED
+  timeToComplete  String?
+  roadmapId       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  roadmap         Roadmap?       @relation(fields: [roadmapId], references: [id])
+  mentees         MenteeProfile[]
+  resources       Resource[]
+}
+
+model Roadmap {
+  id             String   @id @default(cuid())
+  name           String
+  description    String?  @db.Text
+  timeToComplete String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  stages         RoadmapStage[]
+  careerPaths    CareerPath[]
+}
+
+model RoadmapStage {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  order       Int
+  roadmapId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  roadmap     Roadmap  @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  skills      Skill[]
+}
+
+model Skill {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  description  String?  @db.Text
+  category     String?
+  resources    Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  roadmapStages RoadmapStage[]
+  mentors       MentorProfile[]
+  mentees       MenteeProfile[]
+  resourcesRel  Resource[]
+}
+
+// Learning Resources
+model Resource {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  type        String   // VIDEO, ARTICLE, COURSE, BOOK, etc.
+  url         String
+  provider    String?
+  image       String?
+  duration    Int?     // in minutes
+  difficulty  String?  @default("BEGINNER") // BEGINNER, INTERMEDIATE, ADVANCED
+  rating      Float?   @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  skills       Skill[]
+  careerPaths  CareerPath[]
+}
+
+model LearningSession {
+  id              String   @id @default(cuid())
+  userId          String
+  resourceId      String?
+  topic           String?
+  startTime       DateTime
+  durationMinutes Int
+  notes           String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Engagement & Feedback
+model Testimonial {
+  id        String   @id @default(cuid())
+  mentorId  String
+  menteeId  String
+  text      String   @db.Text
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  mentor    MentorProfile @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  mentee    MenteeProfile @relation(fields: [menteeId], references: [id], onDelete: Cascade)
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String?  @db.Text
+  type        String   // SESSION_SCHEDULED, SKILL_COMPLETED, etc.
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  message     String   @db.Text
+  type        String   // SESSION_REMINDER, NEW_MESSAGE, etc.
+  isRead      Boolean  @default(false)
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
