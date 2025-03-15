@@ -4,13 +4,12 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import { CheckCircle, Github, Loader2 } from "lucide-react"
+import { CheckCircle,  Loader2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 
@@ -37,158 +36,149 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
+    <div className="flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <Card className="w-full max-w-md border-0 shadow-lg overflow-hidden">
+        <div className="h-2 bg-gradient-to-r from-[#087E8B] to-[#FF5A5F]"></div>
+        <CardHeader className="space-y-2 pb-6">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
-            <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+            <CardTitle className="text-2xl font-bold text-gray-800">Create an account</CardTitle>
+            <div className="flex items-center space-x-1 text-sm">
               <span
-                className={`flex h-6 w-6 items-center justify-center rounded-full ${
-                  step >= 1 ? "bg-primary text-primary-foreground" : "border"
+                className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors ${
+                  step >= 1 ? "bg-[#087E8B] text-white" : "border border-[#087E8B] text-[#087E8B]"
                 }`}
               >
                 {step > 1 ? <CheckCircle className="h-4 w-4" /> : 1}
               </span>
-              <span className="h-px w-4 bg-border" />
+              <span className="h-px w-4 bg-[#087E8B]/30" />
               <span
-                className={`flex h-6 w-6 items-center justify-center rounded-full ${
-                  step >= 2 ? "bg-primary text-primary-foreground" : "border"
+                className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors ${
+                  step >= 2 ? "bg-[#087E8B] text-white" : "border border-[#087E8B] text-[#087E8B]"
                 }`}
               >
                 {step > 2 ? <CheckCircle className="h-4 w-4" /> : 2}
               </span>
-              <span className="h-px w-4 bg-border" />
+              <span className="h-px w-4 bg-[#087E8B]/30" />
               <span
-                className={`flex h-6 w-6 items-center justify-center rounded-full ${
-                  step >= 3 ? "bg-primary text-primary-foreground" : "border"
+                className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors ${
+                  step >= 3 ? "bg-[#087E8B] text-white" : "border border-[#087E8B] text-[#087E8B]"
                 }`}
               >
                 3
               </span>
             </div>
           </div>
-          <CardDescription>
+          <CardDescription className="text-[#087E8B] font-medium">
             {step === 1 && "Enter your details to create an account"}
             {step === 2 && "Tell us about your role and interests"}
             {step === 3 && "Set up your profile and preferences"}
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {step === 1 && (
               <>
                 <div className="grid grid-cols-2 gap-4">
-                  <Button type="button" variant="outline" className="w-full">
-                    <Github className="mr-2 h-4 w-4" />
-                    Github
-                  </Button>
-                  <Button type="button" variant="outline" className="w-full">
-                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
-                      <path
-                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                        fill="#4285F4"
-                      />
-                      <path
-                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                        fill="#34A853"
-                      />
-                      <path
-                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                        fill="#FBBC05"
-                      />
-                      <path
-                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                        fill="#EA4335"
-                      />
-                      <path d="M1 1h22v22H1z" fill="none" />
-                    </svg>
-                    Google
-                  </Button>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <Separator className="w-full" />
-                  </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="first-name">First name</Label>
-                    <Input id="first-name" placeholder="John" required />
+                    <Label htmlFor="first-name" className="text-gray-700">First name</Label>
+                    <Input 
+                      id="first-name" 
+                      placeholder="John" 
+                      required 
+                      className="border-gray-300 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]" 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="last-name">Last name</Label>
-                    <Input id="last-name" placeholder="Doe" required />
+                    <Label htmlFor="last-name" className="text-gray-700">Last name</Label>
+                    <Input 
+                      id="last-name" 
+                      placeholder="Doe" 
+                      required 
+                      className="border-gray-300 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]" 
+                    />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="name@example.com" required />
+                  <Label htmlFor="email" className="text-gray-700">Email</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="name@example.com" 
+                    required 
+                    className="border-gray-300 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]" 
+                  />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" required />
+                  <Label htmlFor="password" className="text-gray-700">Password</Label>
+                  <Input 
+                    id="password" 
+                    type="password" 
+                    required 
+                    className="border-gray-300 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]" 
+                  />
                 </div>
               </>
             )}
 
             {step === 2 && (
               <>
-                <div className="space-y-2">
-                  <Label>I am a:</Label>
-                  <RadioGroup defaultValue="student" value={accountType} onValueChange={setAccountType}>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="student" id="student" />
-                      <Label htmlFor="student">Student / Mentee</Label>
+                <div className="space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                  <Label className="text-gray-700 font-medium">I am a:</Label>
+                  <RadioGroup defaultValue="student" value={accountType} onValueChange={setAccountType} className="mt-2">
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="student" id="student" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="student" className="font-medium">Student / Mentee</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="mentor" id="mentor" />
-                      <Label htmlFor="mentor">Professional / Mentor</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="mentor" id="mentor" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="mentor" className="font-medium">Professional / Mentor</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="both" id="both" />
-                      <Label htmlFor="both">Both</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="both" id="both" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="both" className="font-medium">Both</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
-                <div className="space-y-2">
-                  <Label>Primary area of interest:</Label>
-                  <RadioGroup defaultValue="fullstack">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="fullstack" id="fullstack" />
-                      <Label htmlFor="fullstack">Full Stack Development</Label>
+                <div className="space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                  <Label className="text-gray-700 font-medium">Primary area of interest:</Label>
+                  <RadioGroup defaultValue="fullstack" className="mt-2">
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="fullstack" id="fullstack" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="fullstack" className="font-medium">Full Stack Development</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="mobile" id="mobile" />
-                      <Label htmlFor="mobile">Mobile App Development</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="mobile" id="mobile" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="mobile" className="font-medium">Mobile App Development</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="ai" id="ai" />
-                      <Label htmlFor="ai">AI & Machine Learning</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="ai" id="ai" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="ai" className="font-medium">AI & Machine Learning</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="cybersecurity" id="cybersecurity" />
-                      <Label htmlFor="cybersecurity">Cybersecurity</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="cybersecurity" id="cybersecurity" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="cybersecurity" className="font-medium">Cybersecurity</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="other" id="other" />
-                      <Label htmlFor="other">Other</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <RadioGroupItem value="other" id="other" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="other" className="font-medium">Other</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 {accountType === "mentor" || accountType === "both" ? (
                   <div className="space-y-2">
-                    <Label htmlFor="experience">Years of professional experience:</Label>
-                    <Input id="experience" type="number" min="0" placeholder="5" required />
+                    <Label htmlFor="experience" className="text-gray-700">Years of professional experience:</Label>
+                    <Input 
+                      id="experience" 
+                      type="number" 
+                      min="0" 
+                      placeholder="5" 
+                      required 
+                      className="border-gray-300 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]" 
+                    />
                   </div>
                 ) : null}
               </>
@@ -197,42 +187,42 @@ export default function SignUpPage() {
             {step === 3 && (
               <>
                 <div className="space-y-2">
-                  <Label htmlFor="bio">Short bio:</Label>
+                  <Label htmlFor="bio" className="text-gray-700">Short bio:</Label>
                   <textarea
                     id="bio"
-                    className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex min-h-[100px] w-full rounded-md border border-gray-300 bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087E8B] focus-visible:border-[#087E8B]"
                     placeholder="Tell us a bit about yourself..."
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label>Communication preferences:</Label>
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="email-updates" />
-                      <Label htmlFor="email-updates">Email updates about new mentors</Label>
+                <div className="space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                  <Label className="text-gray-700 font-medium">Communication preferences:</Label>
+                  <div className="space-y-2 mt-2">
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <Checkbox id="email-updates" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="email-updates" className="text-sm">Email updates about new mentors</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="resource-updates" />
-                      <Label htmlFor="resource-updates">New learning resources in my field</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <Checkbox id="resource-updates" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="resource-updates" className="text-sm">New learning resources in my field</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="event-updates" />
-                      <Label htmlFor="event-updates">Upcoming events and webinars</Label>
+                    <div className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100">
+                      <Checkbox id="event-updates" className="text-[#087E8B] border-[#087E8B]" />
+                      <Label htmlFor="event-updates" className="text-sm">Upcoming events and webinars</Label>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" required />
+                    <Checkbox id="terms" required className="text-[#087E8B] border-[#087E8B]" />
                     <Label htmlFor="terms" className="text-sm">
                       I agree to the{" "}
-                      <Link href="/terms" className="text-primary hover:underline">
+                      <Link href="/terms" className="text-[#FF5A5F] hover:underline font-medium">
                         Terms of Service
                       </Link>{" "}
                       and{" "}
-                      <Link href="/privacy" className="text-primary hover:underline">
+                      <Link href="/privacy" className="text-[#FF5A5F] hover:underline font-medium">
                         Privacy Policy
                       </Link>
                     </Label>
@@ -241,16 +231,25 @@ export default function SignUpPage() {
               </>
             )}
 
-            <div className="flex justify-between">
+            <div className="flex justify-between pt-2">
               {step > 1 ? (
-                <Button type="button" variant="outline" onClick={() => setStep(step - 1)}>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => setStep(step - 1)}
+                  className="border-[#087E8B] text-[#087E8B] hover:bg-[#087E8B]/10"
+                >
                   Back
                 </Button>
               ) : (
                 <div></div>
               )}
 
-              <Button type="submit" disabled={isLoading}>
+              <Button 
+                type="submit" 
+                disabled={isLoading}
+                className="bg-[#087E8B] hover:bg-[#087E8B]/90 text-white"
+              >
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -265,10 +264,10 @@ export default function SignUpPage() {
             </div>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
+        <CardFooter className="flex flex-col space-y-4 border-t pt-6 bg-gray-50">
           <div className="text-center text-sm">
             Already have an account?{" "}
-            <Link href="/sign-in" className="text-primary hover:underline">
+            <Link href="/sign-in" className="text-[#FF5A5F] font-medium hover:underline">
               Sign in
             </Link>
           </div>
